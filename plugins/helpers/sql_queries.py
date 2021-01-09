@@ -197,7 +197,7 @@ CREATE TABLE public.users (
                                 week int NOT NULL, 
                                 month int NOT NULL, 
                                 year int NOT NULL, 
-                                weekday in NOT NULL
+                                weekday int NOT NULL
                             );
     """)
 
@@ -239,7 +239,7 @@ CREATE TABLE public.users (
     """)
 
     time_table_insert = ("""
-        SELECT start_time, extract(hour from start_time), extract(day from start_time), extract(week from start_time), 
-               extract(month from start_time), extract(year from start_time), extract(dayofweek from start_time)
+        SELECT start_time, extract(hour from start_time) as hour, extract(day from start_time) as day, extract(week from start_time) as week, 
+               extract(month from start_time) as month, extract(year from start_time) as year, extract(dayofweek from start_time) as weekday
         FROM songplays
     """)
